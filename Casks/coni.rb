@@ -7,7 +7,7 @@ cask "coni" do
   end
 
   on_intel do
-    sha256 "77a18dbd1b973281be8a31e44f6d50a2cf863ebd73fb5b1162b73eb496d81e1b"
+    sha256 "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
     url "https://github.com/coni-ai/coni/releases/download/v#{version}/Coni-#{version}.dmg"
   end
 
