@@ -1,0 +1,29 @@
+name: Update Cask
+
+on:
+  repository_dispatch:
+    types: [update-cask]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update Cask formula
+        env:
+          VERSION: ${{ github.event.client_payload.version }}
+          SHA256_ARM64: ${{ github.event.client_payload.sha256_arm64 }}
+          SHA256_INTEL: ${{ github.event.client_payload.sha256_intel }}
+        run: |
+          sed -i "s/version \".*\"/version \"${VERSION}\"/" Casks/coni.rb
+          sed -i "/on_arm do/,/end/{s/sha256 \".*\"/sha256 \"${SHA256_ARM64}\"/}" Casks/coni.rb
+          sed -i "/on_intel do/,/end/{s/sha256 \".*\"/sha256 \"${SHA256_INTEL}\"/}" Casks/coni.rb
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Casks/coni.rb
+          git commit -m "Update coni to v${VERSION}"
+          git push
