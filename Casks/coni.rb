@@ -2,12 +2,12 @@ cask "coni" do
   version "0.0.1"
 
   on_arm do
-    sha256 "b706e57aa567d1f89d61c375daf95553455c6b797507f45e470ce9e05dc04f48"
+    sha256 "f5452467113ffcc253a7b0266970e37d4bc1c399b24ff2ea6a0ad0de12d6e9fc"
     url "https://github.com/coni-ai/coni/releases/download/v#{version}/Coni-#{version}-arm64.dmg"
   end
 
   on_intel do
-    sha256 "54ab8704a6c2d144e168197c0b64799accdb829d0dacdf8c2f2c77befd252cd0"
+    sha256 "166ac0a9b246614ad819c6998f23ae26d9ad4c7a45ef338d0b3528e75ef2d60d"
     url "https://github.com/coni-ai/coni/releases/download/v#{version}/Coni-#{version}.dmg"
   end
 
